@@ -12,7 +12,6 @@ body {
 }
 #tytul {
 	font-size: 4.2vw;
-	margin-bottom: 0vw;
 	margin-top: 8vw;
 	font-weight: lighter;
 }
@@ -61,14 +60,14 @@ footer {
 #podpis {
 	margin-bottom: 0;
 	font-size: 2.2vw;
-	color: #ff69b4;
 	font-weight: lighter;
+	animation: colorWave 15s infinite linear; 
 }
 header.header-vinyl {
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-	padding: 15px;
+	padding: 0.75vw;
 	background-color: transparent;
 	box-shadow: none;
 	pointer-events: none;
@@ -80,14 +79,14 @@ header.header-vinyl {
 	box-sizing: border-box;
 }
 .vinyl-menu {
-	display: flex;
-	align-items: center;
-	pointer-events: auto;
-	gap: 15px;
+    display: inline-flex;
+    align-items: center;
+    pointer-events: auto;
+    position: relative; 
 }
 .spinning-vinyl {
-	width: 100px;
-	height: 100px;
+	width: 7vw;
+	height: 7vw;
 	animation: spin 6s linear infinite;
 	transition: transform 0.6s ease-out;
 	transform-origin: center;
@@ -99,14 +98,24 @@ header.header-vinyl {
 	to { transform: rotate(360deg); }
 }
 .hidden-nav {
-	display: flex;
-	gap: 15px;
+    display: flex;
+    gap: 0.75vw;
+    position: absolute;
+    left: 7vw;
+    padding-left: 1vw;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 .vinyl-menu:hover .nav-btn {
     opacity: 1;
     transform: translateX(0);
     visibility: visible;
 }
+.vinyl-menu:hover .hidden-nav {
+    pointer-events: auto;
+}
+
 .vinyl-menu:hover .nav-btn:nth-child(1) { transition-delay: 0.05s; }
 .vinyl-menu:hover .nav-btn:nth-child(2) { transition-delay: 0.1s; }
 .vinyl-menu:hover .nav-btn:nth-child(3) { transition-delay: 0.15s; }
@@ -115,18 +124,17 @@ header.header-vinyl {
 .nav-btn {
 	background-color: rgba(51, 51, 51, 0.8);
 	color: #fff;
-	border: 2px solid transparent;
-	padding: 10px 20px;
-	font-size: 1vw;
+	border: 0.1vw solid transparent;
+	padding: 0.75vw 1.25vw;
+	font-size: 1.1vw;
 	cursor: pointer;
-	border-radius: 25px;
-	font-family: math;
+	border-radius: 1.5vw;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    backdrop-filter: blur(5px);
+    letter-spacing: 0.05vw;
+    backdrop-filter: blur(0.25);
     opacity: 0;
-    transform: translateX(-40px);
+    transform: translateX(-2vw);
     visibility: hidden;
 	transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, visibility 0.4s;
 }
@@ -134,12 +142,12 @@ header.header-vinyl {
 	background-color: #ff69b4;
 	color: #fff;
     border-color: #ff69b4;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 0.75vw rgba(255, 105, 180, 0.6);
+    transform: scale(1.05) translateY(-0.01vw);
     transition-delay: 0s !important;
 }
 a:focus {
-	outline: 4px solid #ff69b4;
+	outline: 0.02vw solid #ff69b4;
 }
 main {
 	text-align: center;
@@ -200,27 +208,73 @@ main {
 .lista-ikon {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 1.2vw;
     list-style: none;
     padding: 0;
-    margin: 0;
-}
-
-@keyframes rgbGlow {
-    0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-    33% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
-    66% { color: #0000ff; text-shadow: 0 0 10px #0000ff; }
-    100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-}
-.linki {
-    color: #f0f0f0;
-    transition: 0.6s;
-}
-
-.linki:hover {
-    animation: rgbGlow 5s linear infinite;
+    margin: 0.2vw;
 }
 
 .lista-ikon .linki i {
-	font-size: 3vw;
+    color: inherit;
+}
+
+@keyframes rgbGlow {
+    0% { color: #ff00ff; text-shadow: 0 0 0.7vw #ff00ff; }
+    25% { color: #ff0000; text-shadow: 0 0 0.5vw #ff0000; }
+    50% { color: #ffff00; text-shadow: 0 0 0.5vw #ffff00; }
+	75% { color: #cc11cc; text-shadow: 0 0 0.5vw #cc11cc; }
+    100% { color: #ff00ff; text-shadow: 0 0 0.5vw #ff00ff; }
+}
+
+.linki {
+    color: #f0f0f0;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.6s ease, color 0.6s;
+    will-change: transform;
+    padding: 0.5vw 1vw;
+}
+
+.linki:hover i{
+    animation: rgbGlow 10s linear infinite;
+}
+
+.lista-ikon .linki i {
+	font-size: 4vw;
+}
+
+.image-group img {
+    transition: transform 0.6s ease;
+    will-change: transform;	
+}
+
+main .kontener .lista-ikon li .linki i{
+	font-size: 4.5vw;
+}
+
+main .kontener .lista-ikon li .linki {
+	padding: 0.5vw 1.7vw;
+}
+
+.jump-letter {
+    display: inline-block;
+    animation: jumpWave 2.5s infinite, colorWave 15s infinite linear; 
+}
+
+@keyframes jumpWave {
+    0%, 40%, 100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-0.75vw);
+    }
+}
+
+@keyframes colorWave {
+    0%   { color: #ff00ff; }
+    20%  { color: #ff7f00; }
+    40%  { color: #ffff00; }
+    60%  { color: #cc11cc; }
+    80%  { color: #ff0000; }
+    100% { color: #ff00ff; }
 }
